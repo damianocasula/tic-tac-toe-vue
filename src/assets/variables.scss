@@ -1,5 +1,6 @@
 /* Colors */
 $main-color: #2c3e50;
+$light-main-color: scale-color($main-color, $lightness: 90%);
 $accent-color: #42b983;
 
 /* Spacing */
