@@ -21,10 +21,14 @@
 
 #nav {
   padding: $normal-spacing;
+  display: flex;
+  justify-content: center;
+  margin-bottom: $normal-spacing;
 
   a {
     font-weight: bold;
     color: $main-color;
+    margin: 0 $small-spacing;
 
     &.router-link-exact-active {
       color: $accent-color;
