@@ -10,6 +10,15 @@
     stroke-linejoin="round"
     class="symbol circle"
   >
-    <circle cx="12" cy="12" r="7"></circle>
+    <circle cx="12" cy="12" r="7" :opacity="opacity"></circle>
   </svg>
 </template>
+
+<script>
+export default {
+  name: 'Cross',
+  props: {
+    opacity: Number
+  }
+}
+</script>

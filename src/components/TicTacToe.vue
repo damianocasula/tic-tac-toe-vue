@@ -1,8 +1,30 @@
 <template>
-  <div class="tic-tac-toe">
-    <div class="cell" v-for="value in [].concat.apply([], board)" :key="value">
-      <CrossSymbol v-show="value == 1" />
-      <CircleSymbol v-show="value == 2" />
+  <div>
+    <select name="currentPlayer" id="current-player" v-model="currentPlayer">
+      <option value="1">Cross</option>
+      <option value="2">Circle</option>
+    </select>
+
+    <div class="tic-tac-toe">
+      <div
+        class="cell"
+        v-for="value in [].concat.apply([], board)"
+        :key="value"
+        @mouseover="value.hover = true"
+        @mouseleave="value.hover = false"
+        @click="clickedCell()"
+      >
+        <CrossSymbol v-show="value.status == 1" />
+        <CircleSymbol v-show="value.status == 2" />
+        <CrossSymbol
+          opacity="0.5"
+          v-show="value.hover && currentPlayer == 1 && value.status == 0"
+        />
+        <CircleSymbol
+          opacity="0.5"
+          v-show="value.hover && currentPlayer == 2 && value.status == 0"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -13,21 +35,27 @@ import CircleSymbol from '@/components/Circle'
 
 export default {
   name: 'TicTacToe',
-  data () {
-    return {
-      board: [
-        [1, 2, 0],
-        [0, 1, 2],
-        [2, 0, 0]
-      ]
-    }
-  },
   components: {
     CrossSymbol,
     CircleSymbol
   },
   props: {
     msg: String
+  },
+  data () {
+    return {
+      board: [
+        [{ status: 1, hover: false }, { status: 2, hover: false }, { status: 0, hover: false }],
+        [{ status: 0, hover: false }, { status: 1, hover: false }, { status: 2, hover: false }],
+        [{ status: 2, hover: false }, { status: 0, hover: false }, { status: 0, hover: false }]
+      ],
+      currentPlayer: 1
+    }
+  },
+  methods: {
+    clickedCell () {
+
+    }
   }
 }
 </script>
@@ -56,11 +84,6 @@ export default {
       &.cross {
         color: $accent-color;
       }
-    }
-
-    &:hover {
-      background-color: $light-main-color;
-      /* TODO: when hovering, display a low-opacity version of the symbol of the player in the turn */
     }
   }
 }
