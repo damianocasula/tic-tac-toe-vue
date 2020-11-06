@@ -1,28 +1,31 @@
 <template>
   <div>
-    <select name="currentPlayer" id="current-player" v-model="currentPlayer">
-      <option value="1">Cross</option>
-      <option value="2">Circle</option>
-    </select>
+    <div class="reset-board-container">
+      <button class="reset-board" @click="resetBoard()">Reset board</button>
+    </div>
 
     <div class="tic-tac-toe">
       <div
         class="cell"
-        v-for="(value, index) in [].concat.apply([], board)"
+        v-for="(cellData, index) in [].concat.apply([], board)"
         :key="index"
-        @mouseover="value.hover = true"
-        @mouseleave="value.hover = false"
-        @click="clickedCell()"
+        @mouseover="cellData.hover = true"
+        @mouseleave="cellData.hover = false"
+        @click="clickedCell(cellData, index)"
       >
-        <CrossSymbol v-show="value.status == 1" />
-        <CircleSymbol v-show="value.status == 2" />
+        <CrossSymbol v-show="cellData.status === 1" />
+        <CircleSymbol v-show="cellData.status === 2" />
         <CrossSymbol
           opacity="0.5"
-          v-show="value.hover && currentPlayer == 1 && value.status == 0"
+          v-show="
+            cellData.hover && currentPlayer === 1 && cellData.status === 0
+          "
         />
         <CircleSymbol
           opacity="0.5"
-          v-show="value.hover && currentPlayer == 2 && value.status == 0"
+          v-show="
+            cellData.hover && currentPlayer === 2 && cellData.status === 0
+          "
         />
       </div>
     </div>
@@ -32,6 +35,12 @@
 <script>
 import CrossSymbol from '@/components/Cross'
 import CircleSymbol from '@/components/Circle'
+
+const getCleanBoard = () => [
+  [{ status: 0, hover: false }, { status: 0, hover: false }, { status: 0, hover: false }],
+  [{ status: 0, hover: false }, { status: 0, hover: false }, { status: 0, hover: false }],
+  [{ status: 0, hover: false }, { status: 0, hover: false }, { status: 0, hover: false }]
+]
 
 export default {
   name: 'TicTacToe',
@@ -44,17 +53,21 @@ export default {
   },
   data () {
     return {
-      board: [
-        [{ status: 1, hover: false }, { status: 2, hover: false }, { status: 0, hover: false }],
-        [{ status: 0, hover: false }, { status: 1, hover: false }, { status: 2, hover: false }],
-        [{ status: 2, hover: false }, { status: 0, hover: false }, { status: 0, hover: false }]
-      ],
+      board: getCleanBoard(),
       currentPlayer: 1
     }
   },
   methods: {
-    clickedCell () {
-
+    clickedCell (cellData, index) {
+      if (!cellData.status) {
+        const verticalIndex = Math.floor(index / 3)
+        const horizontalIndex = index % 3
+        this.board[verticalIndex][horizontalIndex].status = this.currentPlayer
+        this.currentPlayer = this.currentPlayer === 1 ? this.currentPlayer = 2 : this.currentPlayer = 1
+      }
+    },
+    resetBoard () {
+      this.board = getCleanBoard()
     }
   }
 }
