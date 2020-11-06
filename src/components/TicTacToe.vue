@@ -8,8 +8,8 @@
     <div class="tic-tac-toe">
       <div
         class="cell"
-        v-for="value in [].concat.apply([], board)"
-        :key="value"
+        v-for="(value, index) in [].concat.apply([], board)"
+        :key="index"
         @mouseover="value.hover = true"
         @mouseleave="value.hover = false"
         @click="clickedCell()"
