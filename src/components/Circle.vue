@@ -18,7 +18,7 @@
 export default {
   name: 'Cross',
   props: {
-    opacity: Number
+    opacity: String
   }
 }
 </script>
