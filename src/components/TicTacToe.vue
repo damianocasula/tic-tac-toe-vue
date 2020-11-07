@@ -70,7 +70,7 @@ export default {
           alert(`${markName} won!`)
 
           // Reset the game board
-          this.resetBoard()
+          this.resetBoard() // TODO: don't reset board instantly, but make it unplayable afterwars, and prompt for a new game
         } else {
           // Switch current player
           this.currentPlayer = !(this.currentPlayer - 1) + 1
@@ -81,10 +81,15 @@ export default {
       this.board = getCleanBoard()
     },
     simpleWinAlgo (hIdx, vIdx) {
-      // Check row
+      // Check rows
       if (allEqual(this.board[hIdx])) { return true }
 
-      // Check column
+      // Check columns
+      const column = []
+      for (const row of this.board) {
+        column.push(row[vIdx])
+      }
+      if (allEqual(column)) { return true }
 
       // Check diagonal
 
