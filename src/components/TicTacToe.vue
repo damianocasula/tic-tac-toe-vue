@@ -13,19 +13,11 @@
         @mouseleave="cellData.hover = false"
         @click="clickedCell(cellData, index)"
       >
-        <CrossSymbol v-show="cellData.status === 1" />
-        <CircleSymbol v-show="cellData.status === 2" />
-        <CrossSymbol
+        <Mark :type="cellData.status" v-show="cellData.status" />
+        <Mark
+          :type="currentPlayer"
           opacity="0.5"
-          v-show="
-            cellData.hover && currentPlayer === 1 && cellData.status === 0
-          "
-        />
-        <CircleSymbol
-          opacity="0.5"
-          v-show="
-            cellData.hover && currentPlayer === 2 && cellData.status === 0
-          "
+          v-show="cellData.hover && cellData.status === 0"
         />
       </div>
     </div>
@@ -33,9 +25,9 @@
 </template>
 
 <script>
-import CrossSymbol from '@/components/Cross'
-import CircleSymbol from '@/components/Circle'
+import Mark from '@/components/Mark'
 
+// Initial game board matrix
 const getCleanBoard = () => [
   [{ status: 0, hover: false }, { status: 0, hover: false }, { status: 0, hover: false }],
   [{ status: 0, hover: false }, { status: 0, hover: false }, { status: 0, hover: false }],
@@ -45,8 +37,7 @@ const getCleanBoard = () => [
 export default {
   name: 'TicTacToe',
   components: {
-    CrossSymbol,
-    CircleSymbol
+    Mark
   },
   props: {
     msg: String
@@ -60,10 +51,12 @@ export default {
   methods: {
     clickedCell (cellData, index) {
       if (!cellData.status) {
-        const verticalIndex = Math.floor(index / 3)
-        const horizontalIndex = index % 3
-        this.board[verticalIndex][horizontalIndex].status = this.currentPlayer
-        this.currentPlayer = this.currentPlayer === 1 ? this.currentPlayer = 2 : this.currentPlayer = 1
+        // Calculate vertical and horizontal indexes of the game board matrix
+        const vIdx = Math.floor(index / 3)
+        const hIdx = index % 3
+
+        // Update game board matrix cell
+        this.board[vIdx][hIdx].status = this.currentPlayer
       }
     },
     resetBoard () {
