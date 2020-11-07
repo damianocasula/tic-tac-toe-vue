@@ -34,6 +34,9 @@ const getCleanBoard = () => [
   [{ status: 0, hover: false }, { status: 0, hover: false }, { status: 0, hover: false }]
 ]
 
+// Check if all row cell statuses are equal
+const allEqual = arr => arr.every(val => val.status === arr[0].status)
+
 export default {
   name: 'TicTacToe',
   components: {
@@ -51,17 +54,17 @@ export default {
   methods: {
     clickedCell (cellData, index) {
       if (!cellData.status) {
-        // Calculate vertical and horizontal indexes of the game board matrix
-        const vIdx = Math.floor(index / 3)
-        const hIdx = index % 3
+        // Calculate horizontal and vertical indexes of the game board matrix
+        const hIdx = Math.floor(index / 3)
+        const vIdx = index % 3
 
         // Update game board matrix cell
-        this.board[vIdx][hIdx].status = this.currentPlayer
+        this.board[hIdx][vIdx].status = this.currentPlayer
 
         // Check if the move is a winning one
-        if (this.simpleWinAlgo(vIdx, hIdx)) {
+        if (this.simpleWinAlgo(hIdx, vIdx)) {
           // Retrieve the current player's mark name
-          const markName = this.currentPlayer - 1 ? 'Crosses' : 'Circles'
+          const markName = this.currentPlayer - 1 ? 'Circles' : 'Crosses'
 
           // Announce the winner
           alert(`${markName} won!`)
@@ -77,10 +80,19 @@ export default {
     resetBoard () {
       this.board = getCleanBoard()
     },
-    simpleWinAlgo (vIdx, hIdx) {
-      // TODO: design and implement the simple win algorithm
-      return true
+    simpleWinAlgo (hIdx, vIdx) {
+      // Check row
+      if (allEqual(this.board[hIdx])) { return true }
+
+      // Check column
+
+      // Check diagonal
+
+      // Check opposite diagonal
+
+      return false
     }
+
   }
 }
 </script>
