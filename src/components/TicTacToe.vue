@@ -57,10 +57,29 @@ export default {
 
         // Update game board matrix cell
         this.board[vIdx][hIdx].status = this.currentPlayer
+
+        // Check if the move is a winning one
+        if (this.simpleWinAlgo(vIdx, hIdx)) {
+          // Retrieve the current player's mark name
+          const markName = this.currentPlayer - 1 ? 'Crosses' : 'Circles'
+
+          // Announce the winner
+          alert(`${markName} won!`)
+
+          // Reset the game board
+          this.resetBoard()
+        } else {
+          // Switch current player
+          this.currentPlayer = !(this.currentPlayer - 1) + 1
+        }
       }
     },
     resetBoard () {
       this.board = getCleanBoard()
+    },
+    simpleWinAlgo (vIdx, hIdx) {
+      // TODO: design and implement the simple win algorithm
+      return true
     }
   }
 }
