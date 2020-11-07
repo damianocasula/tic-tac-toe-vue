@@ -92,8 +92,17 @@ export default {
       if (allEqual(column)) { return true }
 
       // Check diagonal
+      if (hIdx === vIdx) {
+        const diagonal = []
+        for (const [i, row] of this.board.entries()) {
+          diagonal.push(row[i])
+        }
+        if (allEqual(diagonal)) { return true }
+      }
 
       // Check opposite diagonal
+      // const oppositeDiagonalModel = [[0, 2], [1, 1], [2, 0]]
+      // const oppositeDiagonal = []
 
       return false
     }
