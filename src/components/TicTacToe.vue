@@ -101,8 +101,14 @@ export default {
       }
 
       // Check opposite diagonal
-      // const oppositeDiagonalModel = [[0, 2], [1, 1], [2, 0]]
-      // const oppositeDiagonal = []
+      if (hIdx + vIdx === 2) {
+        const oppositeDiagonal = []
+        for (const [i, row] of this.board.entries()) {
+          const oppositeIndex = Math.abs(i - this.board.length + 1)
+          oppositeDiagonal.push(row[oppositeIndex])
+        }
+        if (allEqual(oppositeDiagonal)) { return true }
+      }
 
       return false
     }
