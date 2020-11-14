@@ -1,8 +1,8 @@
 <template>
   <div class="home">
     <div class="game-container">
-      <div class="game-board">
-        <TicTacToe msg="Welcome to Your Vue.js App" />
+      <div class="game-board-container">
+        <Board />
       </div>
     </div>
   </div>
@@ -10,12 +10,12 @@
 
 <script>
 // @ is an alias to /src
-import TicTacToe from '@/components/TicTacToe.vue'
+import Board from '@/components/Board.vue'
 
 export default {
   name: 'Home',
   components: {
-    TicTacToe
+    Board
   }
 }
 </script>
@@ -27,7 +27,7 @@ export default {
   justify-content: center;
   align-items: center;
 
-  .game-board {
+  .game-board-container {
     padding-top: 17.5vh;
     display: flex;
   }
