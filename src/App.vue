@@ -30,8 +30,12 @@
     color: $main-color;
     margin: 0 $small-spacing;
 
-    &.router-link-exact-active {
+    &.router-link-exact-active, &:active {
       color: $accent-color;
+    }
+
+    &:hover {
+      color: $secondary-color;
     }
   }
 }

@@ -1,7 +1,12 @@
 /* Colors */
-$main-color: #2c3e50;
+$nord0: #2E3440;
+$nord8: #88C0D0;
+$nord9: #81A1C1;
+
+$main-color: $nord0;
 $light-main-color: scale-color($main-color, $lightness: 90%);
-$accent-color: #42b983;
+$accent-color: $nord8;
+$secondary-color: $nord9;
 
 /* Spacing */
 $normal-spacing: 1rem;
