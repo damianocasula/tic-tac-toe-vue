@@ -6,7 +6,9 @@ $nord9: #81A1C1;
 $main-color: $nord0;
 $light-main-color: scale-color($main-color, $lightness: 90%);
 $accent-color: $nord8;
+$light-accent-color: scale-color($accent-color, $lightness: 90%);
 $secondary-color: $nord9;
+$light-main-color: scale-color($secondary-color, $lightness: 90%);
 
 /* Spacing */
 $normal-spacing: 1rem;
