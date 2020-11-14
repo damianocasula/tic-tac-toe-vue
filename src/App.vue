@@ -2,7 +2,7 @@
   <div id="app">
     <div id="nav">
       <router-link to="/">The game</router-link>
-      <router-link to="/help">How to play</router-link>
+      <a href="#" @click="$store.dispatch('resetGame')">Reset board</a>
     </div>
     <router-view />
   </div>

@@ -1,25 +1,19 @@
 <template>
-  <div>
-    <div class="reset-board-container">
-      <button class="reset-board" @click="resetGame()">Reset board</button>
-    </div>
-
-    <div class="game-board">
-      <div
-        class="cell"
-        v-for="(cellData, index) in [].concat.apply([], board)"
-        :key="index"
-        @mouseover="cellData.hover = true"
-        @mouseleave="cellData.hover = false"
-        @click="clickedCell(cellData, index)"
-      >
-        <Mark :type="cellData.status" v-show="cellData.status" />
-        <Mark
-          :type="currentPlayer"
-          opacity="0.5"
-          v-show="cellData.hover && cellData.status === 0"
-        />
-      </div>
+  <div class="game-board">
+    <div
+      class="cell"
+      v-for="(cellData, index) in [].concat.apply([], board)"
+      :key="index"
+      @mouseover="cellData.hover = true"
+      @mouseleave="cellData.hover = false"
+      @click="clickedCell(cellData, index)"
+    >
+      <Mark :type="cellData.status" v-show="cellData.status" />
+      <Mark
+        :type="currentPlayer"
+        opacity="0.5"
+        v-show="cellData.hover && cellData.status === 0"
+      />
     </div>
   </div>
 </template>
