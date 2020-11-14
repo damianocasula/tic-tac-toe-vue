@@ -36,7 +36,7 @@ export default {
   methods: {
     clickedCell (cellData, index) {
       if (!cellData.status) {
-        this.makeMove(cellData, index)
+        this.makeMove({ cellData, index })
       }
     },
     ...mapActions(['resetGame', 'makeMove'])

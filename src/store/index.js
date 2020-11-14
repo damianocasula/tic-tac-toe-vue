@@ -25,7 +25,7 @@ export default new Vuex.Store({
     resetGame ({ commit }) {
       commit('resetBoard')
     },
-    makeMove ({ commit, state }, cellData, index) {
+    makeMove ({ commit, state }, { cellData, index }) {
       // Calculate horizontal and vertical indexes of the game board matrix
       const indexes = {
         hIdx: Math.floor(index / 3),
