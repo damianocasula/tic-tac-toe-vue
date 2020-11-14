@@ -38,7 +38,7 @@ export default new Vuex.Store({
       // Check if the move is a winning one
       if (simpleCheckAlgorithm(state.board, indexes)) {
         // Retrieve the current player's mark name
-        const markName = this.currentPlayer - 1 ? 'Circles' : 'Crosses'
+        const markName = state.currentPlayer - 1 ? 'Circles' : 'Crosses'
 
         // Announce the winner
         alert(`${markName} won!`)
