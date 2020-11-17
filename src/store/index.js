@@ -1,3 +1,5 @@
+/* global alert */
+
 import Vue from 'vue'
 import Vuex from 'vuex'
 import simpleCheckAlgorithm from '@/common/simpleCheckAlgorithm'
@@ -14,11 +16,13 @@ const getCleanBoard = () => [
 export default new Vuex.Store({
   state: {
     board: getCleanBoard(),
-    currentPlayer: 1
+    currentPlayer: 1,
+    mode: 'dark'
   },
   mutations: {
     resetBoard: state => { state.board = [...getCleanBoard()] },
     switchCurrentPlayer: state => { state.currentPlayer = !(state.currentPlayer - 1) + 1 },
+    setMode: (state, mode) => { state.mode = mode },
     updateCell: (state, indexes) => { state.board[indexes.hIdx][indexes.vIdx].status = state.currentPlayer }
   },
   actions: {
@@ -49,10 +53,15 @@ export default new Vuex.Store({
         // Switch current player
         commit('switchCurrentPlayer')
       }
+    },
+    toggleMode ({ commit, state }) {
+      const newMode = state.mode === 'dark' ? 'light' : 'dark'
+      commit('setMode', newMode)
     }
   },
   getters: {
     board: state => state.board,
-    currentPlayer: state => state.currentPlayer
+    currentPlayer: state => state.currentPlayer,
+    mode: state => state.mode
   }
 })

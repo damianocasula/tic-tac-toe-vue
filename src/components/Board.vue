@@ -1,5 +1,5 @@
 <template>
-  <div class="game-board">
+  <div class="game-board" :class="[mode === 'dark' ? 'dark' : 'light']">
     <div
       class="cell"
       v-for="(cellData, index) in [].concat.apply([], board)"
@@ -36,7 +36,7 @@ export default {
     ...mapActions(['resetGame', 'makeMove'])
   },
   computed: {
-    ...mapGetters(['board', 'currentPlayer'])
+    ...mapGetters(['board', 'currentPlayer', 'mode'])
   }
 }
 </script>
@@ -49,16 +49,29 @@ export default {
   grid-template-columns: repeat(3, $cell-size);
   grid-template-rows: repeat(3, $cell-size);
   grid-gap: $small-spacing;
-  background-color: $main-color;
+  background-color: $dark-background-color;
+
+  &.dark {
+    background-color: $light-background-color;
+
+    .cell {
+      background-color: $darker-background-color;
+
+      .symbol {
+        color: $light-main-text-color;
+      }
+    }
+  }
 
   .cell {
     background-color: white; /* TODO: make it a variable */
+
     display: flex;
     justify-content: center;
     align-items: center;
 
     .symbol {
-      color: $main-color;
+      color: $main-text-color;
       width: 100%;
       height: 100%;
 
