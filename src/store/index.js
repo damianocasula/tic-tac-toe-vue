@@ -46,13 +46,20 @@ export default new Vuex.Store({
 
         // Announce the winner
         alert(`${markName} won!`)
+      } else if ([].concat.apply([], state.board).every(cell => cell.status !== 0)) {
+        // Tied
+        alert('It\'s a tie!')
 
-        // Reset the game board
-        commit('resetBoard') // TODO: don't reset board instantly, but make it unplayable afterwars, and prompt for a new game
+        // Switch current player
+        commit('switchCurrentPlayer')
       } else {
         // Switch current player
         commit('switchCurrentPlayer')
+        return true
       }
+
+      // Reset the game board
+      commit('resetBoard') // TODO: don't reset board instantly, but make it unplayable afterwars, and prompt for a new game
     },
     toggleMode ({ commit, state }) {
       const newMode = state.mode === 'dark' ? 'light' : 'dark'
