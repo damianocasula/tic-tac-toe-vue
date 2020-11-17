@@ -5,7 +5,11 @@
       <a href="#" @click="$store.dispatch('resetGame')">Reset board</a>
       <mode-toggle />
     </div>
-    <router-view />
+    <div id="game-container">
+      <div class="game-board-container">
+        <Board />
+      </div>
+    </div>
     <div id="footer">
       <p>Created with 🧋 by <a href="http://github.com/damianocasula">@damianocasula</a>.</p>
     </div>
@@ -14,12 +18,14 @@
 
 <script>
 import ModeToggle from '@/components/ModeToggle'
+import Board from '@/components/Board'
 import { mapGetters } from 'vuex'
 
 export default {
   name: 'App',
   components: {
-    ModeToggle
+    ModeToggle,
+    Board
   },
   computed: {
     ...mapGetters(['mode'])
@@ -104,6 +110,18 @@ export default {
         background-color: #f7f7f7;
         border-radius: $border-radius;
       }
+    }
+  }
+
+  #game-container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+
+    .game-board-container {
+      // padding-top: 17.5vh;
+      display: flex;
     }
   }
 
