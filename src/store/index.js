@@ -22,6 +22,7 @@ export default new Vuex.Store({
   mutations: {
     resetBoard: state => { state.board = [...getCleanBoard()] },
     switchCurrentPlayer: state => { state.currentPlayer = !(state.currentPlayer - 1) + 1 },
+    setCurrentPlayer: (state, player) => { state.currentPlayer = player },
     setMode: (state, mode) => { state.mode = mode },
     updateCell: (state, indexes) => { state.board[indexes.hIdx][indexes.vIdx].status = state.currentPlayer }
   },
@@ -49,9 +50,6 @@ export default new Vuex.Store({
       } else if ([].concat.apply([], state.board).every(cell => cell.status !== 0)) {
         // Tied
         alert('It\'s a tie!')
-
-        // Switch current player
-        commit('switchCurrentPlayer')
       } else {
         // Switch current player
         commit('switchCurrentPlayer')
@@ -60,6 +58,9 @@ export default new Vuex.Store({
 
       // Reset the game board
       commit('resetBoard') // TODO: don't reset board instantly, but make it unplayable afterwars, and prompt for a new game
+
+      // Switch current player to 1 (Crosses)
+      commit('setCurrentPlayer', 1)
     },
     toggleMode ({ commit, state }) {
       const newMode = state.mode === 'dark' ? 'light' : 'dark'
