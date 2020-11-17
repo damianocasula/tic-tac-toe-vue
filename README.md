@@ -1,5 +1,8 @@
 # tic-tac-toe-vue
 
+## Tic Tac Toe in Vue!
+A project for [Start2impact](https://start2impact.it).
+
 ## Project setup
 ```
 npm install
@@ -14,11 +17,3 @@ npm run serve
 ```
 npm run build
 ```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
