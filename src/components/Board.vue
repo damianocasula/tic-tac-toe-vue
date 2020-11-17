@@ -1,6 +1,5 @@
 <template>
   <div class="game-board" :class="[mode === 'dark' ? 'dark' : 'light']">
-  <!-- <div class="game-board"> -->
     <div
       class="cell"
       v-for="(cellData, index) in [].concat.apply([], board)"
@@ -50,16 +49,16 @@ export default {
   grid-template-columns: repeat(3, $cell-size);
   grid-template-rows: repeat(3, $cell-size);
   grid-gap: $small-spacing;
-  background-color: $nord2;
+  background-color: $dark-background-color;
 
   &.dark {
-    background-color: $nord4;
+    background-color: $light-background-color;
 
     .cell {
-      background-color: $nord0;
+      background-color: $darker-background-color;
 
       .symbol {
-        color: $nord6;
+        color: $light-main-text-color;
       }
     }
   }
@@ -72,7 +71,7 @@ export default {
     align-items: center;
 
     .symbol {
-      color: $main-color;
+      color: $main-text-color;
       width: 100%;
       height: 100%;
 

@@ -1,21 +1,19 @@
-/* Colors */
-/* https://www.nordtheme.com/docs/colors-and-palettes */
+/* Nord theme https://www.nordtheme.com/docs/colors-and-palettes */
 $nord0: #2E3440;
-$nord1: #3B4252;
 $nord2: #434C5E;
-$nord0a: rgb(46, 52, 64);
 $nord4: #D8DEE9;
 $nord6: #ECEFF4;
 $nord8: #88C0D0;
-$nord8a: #76a8b6;
 $nord9: #81A1C1;
 
-$main-color: $nord0;
-$light-main-color: scale-color($main-color, $lightness: 90%);
+/* Colors */
+$main-text-color: $nord0;
+$light-main-text-color: $nord6;
 $accent-color: $nord8;
-$light-accent-color: scale-color($accent-color, $lightness: 90%);
-$secondary-color: $nord8a;
-$light-main-color: scale-color($secondary-color, $lightness: 90%);
+$secondary-color: #76a8b6;
+$light-background-color: $nord4;
+$dark-background-color: $nord2;
+$darker-background-color: rgb(46, 52, 64);
 
 /* Spacing */
 $normal-spacing: 1rem;

@@ -1,5 +1,4 @@
 <template>
-  <!-- <div id="app"> -->
   <div id="app" :class="[mode === 'dark' ? 'dark' : 'light']">
     <div id="nav">
       <!-- <router-link to="/">The game</router-link> -->
@@ -34,17 +33,17 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   // text-align: center;
-  color: $main-color;
+  color: $main-text-color;
   height: 100vh;
 
   &.dark {
-    background-color: $nord0a;
+    background-color: $darker-background-color;
 
     #nav {
-      color: $light-main-color;
+      color: $light-main-text-color;
 
       a {
-        color: $light-main-color;
+        color: $light-main-text-color;
 
         &.router-link-exact-active {
           color: $accent-color;
@@ -70,7 +69,7 @@ export default {
 
     a {
       font-weight: bold;
-      color: $main-color;
+      color: $main-text-color;
       margin: 0 $small-spacing;
       text-decoration: none;
       padding: 5px 10px;
