@@ -10,15 +10,17 @@ $nord9: #81A1C1;
 $main-text-color: $nord0;
 $light-main-text-color: $nord6;
 $accent-color: $nord8;
-$secondary-color: #76a8b6;
 $light-background-color: $nord4;
 $dark-background-color: $nord2;
 $darker-background-color: rgb(46, 52, 64);
+$secondary-color: #76a8b6;
+$hover-color: #fff1;
 
 /* Spacing */
 $normal-spacing: 1rem;
 $large-spacing: $normal-spacing * 2;
 $small-spacing: $normal-spacing / 2;
+$border-radius: 5px;
 
 /* Game variables */
 $cell-size: 100px;

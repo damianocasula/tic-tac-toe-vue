@@ -6,6 +6,9 @@
       <mode-toggle />
     </div>
     <router-view />
+    <div id="footer">
+      <p>Created with 🧋 by <a href="http://github.com/damianocasula">@damianocasula</a>.</p>
+    </div>
   </div>
 </template>
 
@@ -29,12 +32,15 @@ export default {
 @import "@/assets/variables.scss";
 
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Noto Sans', Avenir, Helvetica, Ubuntu, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   // text-align: center;
   color: $main-text-color;
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
   &.dark {
     background-color: $darker-background-color;
@@ -54,7 +60,19 @@ export default {
         }
 
         &:hover, .mode-toggle:hover {
-          background-color: #f7f7f711;
+          background-color: $hover-color;
+        }
+      }
+    }
+
+    #footer {
+      color: $light-main-text-color;
+
+      a {
+        color: $accent-color;
+
+        &:hover {
+          color: $secondary-color;
         }
       }
     }
@@ -71,7 +89,6 @@ export default {
       font-weight: bold;
       color: $main-text-color;
       margin: 0 $small-spacing;
-      text-decoration: none;
       padding: 5px 10px;
 
       &.router-link-exact-active {
@@ -85,7 +102,28 @@ export default {
       &:hover, .mode-toggle:hover {
         // color: $secondary-color;
         background-color: #f7f7f7;
-        border-radius: 5px;
+        border-radius: $border-radius;
+      }
+    }
+  }
+
+  #footer {
+    text-align: center;
+    margin: $normal-spacing;
+    display: flex;
+    justify-content: center;
+
+    p {
+      background-color: $hover-color;
+      padding: $normal-spacing;
+      border-radius: $border-radius;
+    }
+
+    a {
+      color: $secondary-color;
+
+      &:hover {
+        color: $accent-color;
       }
     }
   }

@@ -28,7 +28,7 @@ export default {
   align-items: center;
 
   .game-board-container {
-    padding-top: 17.5vh;
+    // padding-top: 17.5vh;
     display: flex;
   }
 }
