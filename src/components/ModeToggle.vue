@@ -32,12 +32,12 @@ export default {
 
   &.dark {
     &:hover {
-      background-color: $hover-color;
+      background-color: $dark-hover-color;
     }
   }
 
   &:hover {
-    background-color: #f7f7f7;
+    background-color: $hover-color;
     cursor: pointer;
     border-radius: $border-radius;
   }

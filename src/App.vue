@@ -66,13 +66,17 @@ export default {
         }
 
         &:hover, .mode-toggle:hover {
-          background-color: $hover-color;
+          background-color: $dark-hover-color;
         }
       }
     }
 
     #footer {
       color: $light-main-text-color;
+
+      p {
+        background-color: $dark-hover-color;
+      }
 
       a {
         color: $accent-color;
@@ -107,7 +111,7 @@ export default {
 
       &:hover, .mode-toggle:hover {
         // color: $secondary-color;
-        background-color: #f7f7f7;
+        background-color: $hover-color;
         border-radius: $border-radius;
       }
     }
