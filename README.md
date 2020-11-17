@@ -5,6 +5,12 @@ A project for [Start2impact](https://start2impact.it).
 
 ## Project setup
 
+### Requirements
+
+- NodeJS
+- NPM
+- Vue CLI
+
 ### Install dependencies
 ```
 npm install
@@ -17,6 +23,6 @@ npm run serve
 
 ### Deploy to GitHub
 
-1. Use deploy-example.sh as a reference to create a deployment script named `deploy.sh`.
+1. Use `deploy-example.sh` as a reference to create a deployment script named `deploy.sh`.
 2. `chmod +x deploy.sh`
 3. `./deploy.sh`
