@@ -4,16 +4,19 @@
 A project for [Start2impact](https://start2impact.it).
 
 ## Project setup
+
+### Install dependencies
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### Hot-reload server for development
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
-```
-npm run build
-```
+### Deploy to GitHub
+
+1. Use deploy-example.sh as a reference to create a deployment script named `deploy.sh`.
+2. `chmod +x deploy.sh`
+3. `./deploy.sh`
