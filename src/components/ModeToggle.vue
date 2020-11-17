@@ -1,5 +1,5 @@
 <template>
-  <div class="mode-toggle" @click="toggleMode()">
+  <div :class="[mode === 'dark' ? 'dark' : 'light']" class="mode-toggle" @click="toggleMode()">
     <sun-icon v-if="mode === 'dark'" class="sun-icon"></sun-icon>
     <moon-icon v-if="mode === 'light'" class="moon-icon"></moon-icon>
   </div>
@@ -7,23 +7,19 @@
 
 <script>
 import { SunIcon, MoonIcon } from 'vue-feather-icons'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
-  name: 'Mode Toggle',
-  data () {
-    return {
-      mode: 'dark'
-    }
-  },
+  name: 'ModeToggle',
   components: {
     SunIcon,
     MoonIcon
   },
   methods: {
-    toggleMode () {
-      const newMode = this.mode === 'dark' ? 'light' : 'dark'
-      this.mode = newMode
-    }
+    ...mapActions(['toggleMode'])
+  },
+  computed: {
+    ...mapGetters(['mode'])
   }
 }
 </script>
@@ -33,6 +29,12 @@ export default {
 
 .mode-toggle {
   padding: 5px 10px 0;
+
+  &.dark {
+    &:hover {
+      background-color: #f7f7f711;
+    }
+  }
 
   &:hover {
     background-color: #f7f7f7;

@@ -1,9 +1,10 @@
 <template>
-  <div id="app">
+  <!-- <div id="app"> -->
+  <div id="app" :class="[mode === 'dark' ? 'dark' : 'light']">
     <div id="nav">
-      <router-link to="/">The game</router-link>
+      <!-- <router-link to="/">The game</router-link> -->
       <a href="#" @click="$store.dispatch('resetGame')">Reset board</a>
-      <ModeToggle />
+      <mode-toggle />
     </div>
     <router-view />
   </div>
@@ -11,16 +12,21 @@
 
 <script>
 import ModeToggle from '@/components/ModeToggle'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'App',
   components: {
     ModeToggle
+  },
+  computed: {
+    ...mapGetters(['mode'])
   }
 }
 </script>
 
 <style lang="scss">
+@import "@/assets/reset.scss";
 @import "@/assets/variables.scss";
 
 #app {
@@ -29,34 +35,59 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   // text-align: center;
   color: $main-color;
-}
+  height: 100vh;
 
-#nav {
-  padding: $normal-spacing;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: $normal-spacing;
+  &.dark {
+    background-color: $nord0a;
 
-  a {
-    font-weight: bold;
-    color: $main-color;
-    margin: 0 $small-spacing;
-    text-decoration: none;
-    padding: 5px 10px;
+    #nav {
+      color: $light-main-color;
 
-    &.router-link-exact-active {
-      color: $accent-color;
+      a {
+        color: $light-main-color;
+
+        &.router-link-exact-active {
+          color: $accent-color;
+        }
+
+        &:active {
+          color: $secondary-color;
+        }
+
+        &:hover, .mode-toggle:hover {
+          background-color: #f7f7f711;
+        }
+      }
     }
+  }
 
-    &:active {
-      color: $secondary-color;
-    }
+  #nav {
+    padding: $normal-spacing;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: $normal-spacing;
 
-    &:hover, .mode-toggle:hover {
-      // color: $secondary-color;
-      background-color: #f7f7f7;
-      border-radius: 5px;
+    a {
+      font-weight: bold;
+      color: $main-color;
+      margin: 0 $small-spacing;
+      text-decoration: none;
+      padding: 5px 10px;
+
+      &.router-link-exact-active {
+        color: $accent-color;
+      }
+
+      &:active {
+        color: $secondary-color;
+      }
+
+      &:hover, .mode-toggle:hover {
+        // color: $secondary-color;
+        background-color: #f7f7f7;
+        border-radius: 5px;
+      }
     }
   }
 }
