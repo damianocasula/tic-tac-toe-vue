@@ -3,10 +3,22 @@
     <div id="nav">
       <router-link to="/">The game</router-link>
       <a href="#" @click="$store.dispatch('resetGame')">Reset board</a>
+      <ModeToggle />
     </div>
     <router-view />
   </div>
 </template>
+
+<script>
+import ModeToggle from '@/components/ModeToggle'
+
+export default {
+  name: 'App',
+  components: {
+    ModeToggle
+  }
+}
+</script>
 
 <style lang="scss">
 @import "@/assets/variables.scss";
