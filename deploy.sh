@@ -1,4 +1,5 @@
 #!/usr/bin/env sh
+# docs: https://cli.vuejs.org/guide/deployment.html#github-pages
 
 # abort on errors
 set -e
