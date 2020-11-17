@@ -35,19 +35,28 @@ export default {
   padding: $normal-spacing;
   display: flex;
   justify-content: center;
+  align-items: center;
   margin-bottom: $normal-spacing;
 
   a {
     font-weight: bold;
     color: $main-color;
     margin: 0 $small-spacing;
+    text-decoration: none;
+    padding: 5px 10px;
 
-    &.router-link-exact-active, &:active {
+    &.router-link-exact-active {
       color: $accent-color;
     }
 
-    &:hover {
+    &:active {
       color: $secondary-color;
+    }
+
+    &:hover, .mode-toggle:hover {
+      // color: $secondary-color;
+      background-color: #f7f7f7;
+      border-radius: 5px;
     }
   }
 }
