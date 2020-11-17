@@ -1,16 +1,29 @@
 <template>
-  <div class="mode-toggle">
-    <circle-icon size="1.5x" class="circle-icon"></circle-icon> 
+  <div class="mode-toggle" @click="toggleMode()">
+    <sun-icon v-if="mode === 'dark'" class="sun-icon"></sun-icon>
+    <moon-icon v-if="mode === 'light'" class="moon-icon"></moon-icon>
   </div>
 </template>
 
 <script>
-import { CircleIcon } from 'vue-feather-icons'
+import { SunIcon, MoonIcon } from 'vue-feather-icons'
 
 export default {
   name: 'Mode Toggle',
+  data () {
+    return {
+      mode: 'dark'
+    }
+  },
   components: {
-    CircleIcon
+    SunIcon,
+    MoonIcon
+  },
+  methods: {
+    toggleMode () {
+      const newMode = this.mode === 'dark' ? 'light' : 'dark'
+      this.mode = newMode
+    }
   }
 }
 </script>
