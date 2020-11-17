@@ -1,13 +1,14 @@
 /* Colors */
 $nord0: #2E3440;
 $nord8: #88C0D0;
+$nord8a: #76a8b6;
 $nord9: #81A1C1;
 
 $main-color: $nord0;
 $light-main-color: scale-color($main-color, $lightness: 90%);
 $accent-color: $nord8;
 $light-accent-color: scale-color($accent-color, $lightness: 90%);
-$secondary-color: $nord9;
+$secondary-color: $nord8a;
 $light-main-color: scale-color($secondary-color, $lightness: 90%);
 
 /* Spacing */
