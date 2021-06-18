@@ -1,7 +1,4 @@
-# tic-tac-toe-vue
-
-## Tic Tac Toe in Vue!
-A project for [Start2impact](https://start2impact.it).
+# Tic Tac Toe in Vue!
 
 ## Project setup
 
